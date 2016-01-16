@@ -67,8 +67,9 @@ while True:
             pointPos.append(temp)
             count = count + 1
             print pointPos
-        if count >= 21:
+        if count == 21:
             f.write(json.dumps(pointPos))
+            f.close()
             print 'write!'
     x, y = pygame.mouse.get_pos()
     x -= mouse_cursor.get_width() / 2

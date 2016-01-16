@@ -11,15 +11,26 @@ BACKGROUND = 'images/watermelon.png'
 BLACKTILE = 'images/black.png'
 WHITETILE = 'images/white.png'
 HAND = 'images/hand.png'
-SCREEN_WIDTH = 423
-SCREEN_HEIGHT = 424
+START_IMAGE = 'images/start.png'
+REPLAY_IMAGE = 'images/replay.png'
+SCREEN_WIDTH = 580
+SCREEN_HEIGHT = 580
 FULLSCREENMOD = False 
 BLACK = 1
 WHITE = 2
 COMPUTER = 2
 PLAYER = 1
 
-PLAYER_COLOR = WHITE 
+choose = False
+source = None
+target = None
+global checkedTile
+checkedTile = []
+global computerTileSum
+computerTileSum = 6
+global playerTileSum
+playerTileSum = 6
+PLAYER_COLOR = WHITE
 
 pointPos = [] #positions of the 21 points
 tilePos = [0] * 21 #whether there is a tile
@@ -35,8 +46,8 @@ def nearPoint((x, y)):
     return None
 
 def getPointPos():
+    f = open('pointPos.txt', 'rb')
     try:
-        f = open('pointPos.txt', 'rb')
         pointPos = json.loads(f.read())
         return pointPos
     except:
@@ -57,12 +68,14 @@ def getDistance():
         f.close()
 
 def initTilePos():
+    for x in range(21):
+        tilePos[x] = 0
     tilePos[0] = tilePos[1] = tilePos[2] = tilePos[3] = tilePos[8] = tilePos[4] = 1 #black
     tilePos[15] = tilePos[13] = tilePos[14] = tilePos[12] = tilePos[7] = tilePos[11] = 2 #white
     return tilePos
 
 def getXY(target):
-    x = pointPos[target][0] * SCREEN_WIDTH - mouse_cursor.get_width()*0.8
+    x = pointPos[target][0] * SCREEN_WIDTH - mouse_cursor.get_width()*0.7
     y = pointPos[target][1] * SCREEN_HEIGHT - mouse_cursor.get_width()*0.8
     return (x, y)
 
@@ -129,38 +142,44 @@ def checkAll():
         else:
             pass
     for eachDeadTile in deadTile:
-        tilePos(eachDeadTile) = 0
+        tilePos[eachDeadTile] = 0
+def initGame():
+    global computerTileSum
+    computerTileSum = 6
+    global playerTileSum
+    playerTileSum = 6
+    initTilePos()
+    return 'init game ok, player goes first with white chess, press f to fullscreen'
 
+pygame.init()
 pointPos = getPointPos()
 distance = getDistance()
 tilePos = initTilePos()
 #turn = goesFirst()
 turn = 1
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), 0, 32)
-pygame.display.set_caption(u'watermelon chess')
+pygame.display.set_caption('西瓜棋')
 background = pygame.image.load(BACKGROUND).convert()
 mouse_cursor = pygame.image.load(BLACKTILE).convert_alpha()
 blackTile = pygame.image.load(BLACKTILE).convert_alpha()
 whiteTile = pygame.image.load(WHITETILE).convert_alpha()
 hand = pygame.image.load(HAND).convert_alpha()
+startImage = pygame.image.load(START_IMAGE).convert_alpha()
+replayImage = pygame.image.load(REPLAY_IMAGE).convert_alpha()
 
-choose = False
-source = None
-target = None
-global checkedTile
-checkedTile = []
-global computerTileSum
-computerTileSum = 6
-global playerTileSum
-playerTileSum = 6
+myFont = pygame.font.SysFont('arial', 18)
+
+message = initGame()
 
 while True:
     if computerTileSum < 3:
         print 'game over'
-        exit()
+        message = 'game over, computer win!'
+        #exit()
     if playerTileSum < 3:
         print 'game over'
-        exit()
+        message = 'game over, player win!'
+        #exit()
     if turn == PLAYER:
         for event in pygame.event.get():
             if event.type == QUIT:
@@ -172,6 +191,11 @@ while True:
                         screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), FULLSCREEN, 32)
                     else:
                         screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), 0, 32)
+            if event.type == MOUSEBUTTONDOWN:
+                x, y = pygame.mouse.get_pos()
+                if 490 < x < 560 and 300 < y < 330:
+                    message = initGame()
+
             if event.type == MOUSEBUTTONDOWN and turn == PLAYER:
                 x, y = pygame.mouse.get_pos()
                 if not choose:
@@ -193,11 +217,14 @@ while True:
                             checkAll()
                             if tempTilePos != tilePos:
                                 print 'checked and changed'
+                                message = 'white chess was ate'
                         else:
                             tilePos[source] = chooseColor
-                            print 'target error'
+                            print 'target too far'
+                            message = 'target too far'
                     else:
                         print 'target error'
+                        message = 'target error'
                         tilePos[source] = chooseColor
                     choose = False
 
@@ -206,13 +233,15 @@ while True:
         move = computerMove()
         if not move:
             print 'game over'
-            exit()
+            message = 'game over, player win!'
+            #exit()
         (sourceCOM, targetCOM) = move
         tilePos[targetCOM], tilePos[sourceCOM] = BLACK, 0
         tempTilePos = tilePos
         checkAll()
         if tempTilePos != tilePos:
             print 'checked and changed'
+            message = 'black chess was ate'
         turn = PLAYER
     else:
         print 'turn error'
@@ -223,6 +252,8 @@ while True:
     handY -= mouse_cursor.get_height() /2
     pygame.mouse.set_visible(False)
     screen.blit(background, (0,0))
+    #screen.blit(startImage, (490, 200))
+    screen.blit(replayImage, (490, 300))
     for index, tile in enumerate(tilePos):
         if tile != 0:
             (x, y) = getXY(index)
@@ -238,6 +269,8 @@ while True:
             screen.blit(blackTile, (handX, handY))
         elif chooseColor == 2:
             screen.blit(whiteTile, (handX, handY))
+    text_surface = myFont.render(message, True, (0, 0, 0), (102, 204, 255))
+    screen.blit(text_surface, (0,500))
     screen.blit(hand, (handX, handY))
     pygame.display.update()
     
