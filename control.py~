@@ -160,105 +160,120 @@ def clock(game):
     else:
         return False
 
-def playControl(event, game):
-    if game.turn == 'none':
-        if clock(game):
-            response= getData(game)
-            game.msg = 'preparing' + time.ctime()
-            game.time = time.time()#reset the clock after connection
-            if response['preOK']:
-                game.turn = response['turn']
-                if game.name == response['player1']:
-                    game.opponent = response['player2']
-                else:
-                    game.opponent = response['player1']
-                game.msg = 'turn:' + game.turn
-    elif game.turn == game.name:
-        #for temp
-        if game.playerColor == data.BLACK:
-            color = 'BLACK'
-        else:
-            color = 'WHITE'
-        game.msg = "it's your turn to move with " + color 
-        chessman = None
-        if event.type == MOUSEBUTTONDOWN:
-            x, y = pygame.mouse.get_pos()
-            button = chosenButton((x, y), game)
-            chessman = chosenChessman((x, y), game.gameMap)
-            if button == 'replay':
-                game.status = 'query'
-                game = setQuery(game, 'play', 'play', 'Reset the game?')
-            elif button == 'back':
-                game.status = 'query'
-                game = setQuery(game, 'play', 'menu', 'Back to menu?')
-            else:
-                pass
-        if chessman != None:
-            if game.chessmanInHand == False:
-                if game.pointStatus[chessman] == game.playerColor:
-                        game.chosenChessmanColor = game.pointStatus[chessman]
-                        game.pointStatus[chessman] = 0
-                        game.chessmanInHand = True
-                        game.chosenChessman = chessman
-                        game.msg = 'Chessman was chose'
-            else:
-                if game.pointStatus[chessman] == 0 and\
-                        game.distance[game.chosenChessman][chessman] == 1:
-                    game.pointStatus[chessman] = game.chosenChessmanColor
-                    game.msg = 'Chessman was moved'
-                    if game.isOnline:
-                        game.turn = game.opponent
-                        sendData(game)
-                        game.time = time.time()
-                    else:
-                        game.turn = 'computer'
-                else:
-                    game.pointStatus[game.chosenChessman] = game.chosenChessmanColor
-                    game.msg = 'not a valid choice'
-                game.chessmanInHand = False
-            
-    elif game.turn == 'computer':
-        if event.type == MOUSEBUTTONDOWN:
-            x, y = pygame.mouse.get_pos()
-            button = chosenButton((x, y), game)
-            chessman = chosenChessman((x, y), game.gameMap)
-            if button == 'replay':
-                game.status = 'query'
-                game = setQuery(game, 'play', 'play', 'Reset the game?')
-            elif button == 'back':
-                game.status = 'query'
-                game = setQuery(game, 'play', 'menu', 'Back to menu?')
-            else:
-                pass
-        move = computerMove(game)
-        if move:
-            source, target = computerMove(game)
-            game.pointStatus[move[1]] = game.opponentColor
-            game.pointStatus[move[0]] = 0
-            game.turn = game.name
+def checkOpponent(game):
+    newPointStatus = game.pointStatus
+    if clock(game):
+        response = getData(game)
+        print response
+        game.msg = time.ctime() + "querying or waiting for you opponent's movement"
+        game.time = time.time()
+        game.turn = response['turn']
+        try:
+            newPointStatus = json.loads(response['pointStatus'])
+        except:
+            pass
+        if not response['turn']:
+            game.status = 'query'
+            game = setQuery(game, 'play', 'menu', 'Your opponent ran away~ return pls')
+            game.enableButton = [data.CONFIRM_RECT]
+    return game, newPointStatus
 
-    elif game.turn == game.opponent:
-        if event.type == MOUSEBUTTONDOWN:
-            x, y = pygame.mouse.get_pos()
-            button = chosenButton((x, y), game)
-            chessman = chosenChessman((x, y), game.gameMap)
-            if button == 'replay':
-                game.status = 'query'
-                game = setQuery(game, 'play', 'play', 'Reset the game?')
-            elif button == 'back':
-                game.status = 'query'
-                game = setQuery(game, 'play', 'menu', 'Back to menu?')
-            else:
-                pass
-        if clock(game):
-            response = getData(game)
-            game.msg = time.ctime() + "  waiting for you opponent's movement"
-            game.time = time.time()
-            if response['turn'] == game.name:
-                game.pointStatus = json.loads(response['pointStatus'])
-                game.turn = game.name
+def playControl(event, game):
+    color = game.strColor(game.playerColor)
+    chessman = None
+    button = None
+    if event.type == MOUSEBUTTONDOWN:
+        x, y = pygame.mouse.get_pos()
+        button = chosenButton((x, y), game)
+        chessman = chosenChessman((x, y), game.gameMap)
+
+    if button:
+        if button == 'replay':
+            game.status = 'query'
+            game = setQuery(game, 'play', 'play', 'Reset the game?')
+        elif button == 'back':
+            game.status = 'query'
+            game = setQuery(game, 'play', 'menu', 'Back to menu?')
+        else:
+            pass
     else:
-        pass 
+        if game.turn == 'none':
+            if clock(game):
+                response= getData(game)
+                game.msg = 'preparing' + time.ctime()
+                game.time = time.time()#reset the clock after connection
+                if response['preOK']:
+                    game.turn = response['turn']
+                    if game.name == response['player1']:
+                        game.opponent = response['player2']
+                    else:
+                        game.opponent = response['player1']
+                    game.msg = 'turn:' + game.turn
+        elif game.turn == game.name:
+            game.msg = "it's your turn to move with " + color 
+            if chessman != None:
+                if game.chessmanInHand == False:
+                    if game.pointStatus[chessman] == game.playerColor:
+                            game.chosenChessmanColor = game.pointStatus[chessman]
+                            game.pointStatus[chessman] = 0
+                            game.chessmanInHand = True
+                            game.chosenChessman = chessman
+                            game.msg = 'Chessman was chose'
+                else:
+                    if game.pointStatus[chessman] == 0 and\
+                            game.distance[game.chosenChessman][chessman] == 1:
+                        game.pointStatus[chessman] = game.chosenChessmanColor
+                        game.msg = 'Chessman was moved'
+                        if game.isOnline:
+                            game.turn = game.opponent
+                            sendData(game)
+                            game.time = time.time()
+                        else:
+                            game.turn = 'computer'
+                    else:
+                        game.pointStatus[game.chosenChessman] = game.chosenChessmanColor
+                        game.msg = 'not a valid choice'
+                    game.chessmanInHand = False
+            game, newPointStatus= checkOpponent(game)
+                
+        elif game.turn == 'computer':
+            if event.type == MOUSEBUTTONDOWN:
+                x, y = pygame.mouse.get_pos()
+                button = chosenButton((x, y), game)
+                chessman = chosenChessman((x, y), game.gameMap)
+                if button == 'replay':
+                    game.status = 'query'
+                    game = setQuery(game, 'play', 'play', 'Reset the game?')
+                elif button == 'back':
+                    game.status = 'query'
+                    game = setQuery(game, 'play', 'menu', 'Back to menu?')
+                else:
+                    pass
+            move = computerMove(game)
+            if move:
+                source, target = computerMove(game)
+                game.pointStatus[move[1]] = game.opponentColor
+                game.pointStatus[move[0]] = 0
+                game.turn = game.name
+
+        elif game.turn == game.opponent:
+            if event.type == MOUSEBUTTONDOWN:
+                x, y = pygame.mouse.get_pos()
+                button = chosenButton((x, y), game)
+                chessman = chosenChessman((x, y), game.gameMap)
+                if button == 'replay':
+                    game.status = 'query'
+                    game = setQuery(game, 'play', 'play', 'Reset the game?')
+                elif button == 'back':
+                    game.status = 'query'
+                    game = setQuery(game, 'play', 'menu', 'Back to menu?')
+                else:
+                    pass
+            game, newPointStatus = checkOpponent(game)
+            if game.turn == game.name:
+                game.pointStatus = newPointStatus
+        else:
+            pass 
     game = checkAll(game)
     return game
 
@@ -297,26 +312,27 @@ def queryControl(event, game):
         if button == 'confirm':
             game.resetGame()
             game.status = game.nextStatus
+            if game.nextStatus == 'play':
+                game.enableButton = [data.BACK_RECT, data.REPLAY_RECT]
+                if game.over:
+                    game.resetGame()
+            else:
+                if game.nextStatus == 'menu':
+                    game.enableButton = [data.LOCALGAME_RECT, data.NETWORKGAME_RECT, data.MENU_QUIT_RECT]
+                #if menu or quit
+                if game.isOnline:
+                    resetRoom(game)
         elif button == 'cancel':
-            if game.over:
-                game.resetGame()
             game.status = game.lastStatus
         else:
             pass
 
-        if game.status == 'menu':
-            game.enableButton = [data.LOCALGAME_RECT, data.NETWORKGAME_RECT, data.MENU_QUIT_RECT]
-            if game.isOnline:
-                resetRoom(game)
-        elif game.status == 'play':
-            game.enableButton = [data.BACK_RECT, data.REPLAY_RECT]
     return game
 
 def eventControl(event, game): 
     if event.type == QUIT:
-        pdb.set_trace()
         game.lastStatus = game.status
-        game.status == 'query'
+        game.status = 'query'
         game = setQuery(game, game.lastStatus, 'quit', 'Quit the game?')
 
     elif event.type == KEYDOWN:

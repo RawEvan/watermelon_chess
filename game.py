@@ -22,8 +22,8 @@ class Game():
         self.roomID = 'local'
         self.name = 'default'
         self.opponent = 'computer'
-        #self.url = 'http://localhost:8080/room/'
-        self.url = 'http://xiguaqi.applinzi.com/room/'
+        self.url = 'http://localhost:8080/room/'
+        #self.url = 'http://xiguaqi.applinzi.com/room/'
         self.time = None
         self.resetGame()
 
@@ -38,3 +38,10 @@ class Game():
         self.checkedChessmen = []
         self.deadChessmen = []
         self.msg = 'initial'
+
+    def strColor(self, color):
+        if color == data.BLACK:
+            color = 'BLACK'
+        else:
+            color = 'WHITE'
+        return color

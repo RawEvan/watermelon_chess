@@ -68,11 +68,7 @@ class UI():
         self.screen.blit(self.replayImage, data.REPLAY_RECT[0])
         self.text_surface = self.msgFont.render(self.game.msg, True, (102, 204, 255), (255, 255, 255))
         
-        #for temp
-        if self.game.playerColor == data.BLACK:
-            color = 'black'
-        else:
-            color = 'white'
+        color = self.game.strColor(self.game.playerColor)
         sideText = ['your name:' + str(self.game.name),\
                 'your color:' + color,\
                 'turn:' + str(self.game.turn),\

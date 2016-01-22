@@ -37,4 +37,11 @@ class Game():
         self.chosenChessman = None
         self.checkedChessmen = []
         self.deadChessmen = []
-        self.msg = 'reset'
+        self.msg = 'initial'
+
+    def strColor(self, color):
+        if color == data.BLACK:
+            color = 'BLACK'
+        else:
+            color = 'WHITE'
+        return color
