@@ -4,3 +4,270 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
+BACK	.\data.py	/^BACK = 'images\/back.png'$/;"	v
+BACKGROUND	.\data.py	/^BACKGROUND = 'images\/watermelon.png'$/;"	v
+BACKGROUND	.\setPointsPos.py	/^BACKGROUND = 'images\/watermelon.png'$/;"	v
+BACKGROUND	.\watermelon - 副本.py	/^BACKGROUND = 'images\/watermelon.png'$/;"	v
+BACKGROUND	.\watermelon.py	/^BACKGROUND = 'images\/watermelon.png'$/;"	v
+BACK_RECT	.\data.py	/^BACK_RECT = ((460, 400), 117, 50)$/;"	v
+BLACK	.\data.py	/^BLACK = 1$/;"	v
+BLACK	.\watermelon - 副本.py	/^BLACK = 1$/;"	v
+BLACK	.\watermelon.py	/^BLACK = 1$/;"	v
+BLACKTILE	.\data.py	/^BLACKTILE = 'images\/black.png'$/;"	v
+BLACKTILE	.\setPointsPos.py	/^BLACKTILE = 'images\/black.png'$/;"	v
+BLACKTILE	.\watermelon - 副本.py	/^BLACKTILE = 'images\/black.png'$/;"	v
+BLACKTILE	.\watermelon.py	/^BLACKTILE = 'images\/black.png'$/;"	v
+CANCEL	.\data.py	/^CANCEL = 'images\/cancel.png'$/;"	v
+CANCEL_RECT	.\data.py	/^CANCEL_RECT = ((291,400), 117, 50)$/;"	v
+CHESSMAN_HEIGHT	.\data.py	/^CHESSMAN_HEIGHT = 20$/;"	v
+CHESSMAN_WIDTH	.\data.py	/^CHESSMAN_WIDTH = 20$/;"	v
+COMPUTER	.\data.py	/^COMPUTER = 1$/;"	v
+COMPUTER	.\watermelon - 副本.py	/^COMPUTER = 2$/;"	v
+COMPUTER	.\watermelon.py	/^COMPUTER = 2$/;"	v
+CONFIRM	.\data.py	/^CONFIRM = 'images\/quit.png'$/;"	v
+CONFIRM_RECT	.\data.py	/^CONFIRM_RECT = ((173,400), 117, 50)$/;"	v
+CONGRATULATION	.\data.py	/^CONGRATULATION = 'images\/congratulation.png'$/;"	v
+ChessBoard	.\chessBoard.py	/^class ChessBoard():$/;"	c
+ChessBoard	.\game.py	/^from chessBoard import ChessBoard$/;"	i
+DISTANCEPATH	.\data.py	/^DISTANCEPATH = 'distance.txt'$/;"	v
+FONT	.\data.py	/^FONT = 'aria'$/;"	v
+FULLSCREENMOD	.\data.py	/^FULLSCREENMOD = False $/;"	v
+FULLSCREENMOD	.\setPointsPos.py	/^FULLSCREENMOD = False $/;"	v
+FULLSCREENMOD	.\watermelon - 副本.py	/^                    FULLSCREENMOD = not FULLSCREENMOD$/;"	v
+FULLSCREENMOD	.\watermelon - 副本.py	/^FULLSCREENMOD = False $/;"	v
+FULLSCREENMOD	.\watermelon.py	/^                    FULLSCREENMOD = not FULLSCREENMOD$/;"	v
+FULLSCREENMOD	.\watermelon.py	/^FULLSCREENMOD = False $/;"	v
+Game	.\display.py	/^from game import Game$/;"	i
+Game	.\game.py	/^class Game():$/;"	c
+HAND	.\data.py	/^HAND = 'images\/hand.png'$/;"	v
+HAND	.\setPointsPos.py	/^HAND = 'images\/hand.png'$/;"	v
+HAND	.\watermelon - 副本.py	/^HAND = 'images\/hand.png'$/;"	v
+HAND	.\watermelon.py	/^HAND = 'images\/hand.png'$/;"	v
+LOCALGAME	.\data.py	/^LOCALGAME = 'images\/localGame.png'$/;"	v
+LOCALGAME_RECT	.\data.py	/^LOCALGAME_RECT = ((232,200), 117, 50)$/;"	v
+MAPPATH	.\data.py	/^MAPPATH = 'pointPos.txt'$/;"	v
+MENU	.\data.py	/^MENU = 'images\/menu.png'$/;"	v
+MENU_QUIT_RECT	.\data.py	/^MENU_QUIT_RECT = ((232,400), 117, 50)$/;"	v
+NETWORKGAME	.\data.py	/^NETWORKGAME = 'images\/networkGame.png'$/;"	v
+NETWORKGAME_RECT	.\data.py	/^NETWORKGAME_RECT = ((232,300), 117, 50)$/;"	v
+PITY	.\data.py	/^PITY = 'images\/pity.png'$/;"	v
+PLAYER	.\data.py	/^PLAYER = 2$/;"	v
+PLAYER	.\watermelon - 副本.py	/^PLAYER = 1$/;"	v
+PLAYER	.\watermelon.py	/^PLAYER = 1$/;"	v
+PLAYER_COLOR	.\watermelon - 副本.py	/^PLAYER_COLOR = WHITE$/;"	v
+PLAYER_COLOR	.\watermelon.py	/^PLAYER_COLOR = WHITE$/;"	v
+PLAY_QUIT_RECT	.\data.py	/^PLAY_QUIT_RECT = ((460,400), 117, 50)$/;"	v
+QUIT	.\data.py	/^QUIT = 'images\/quit.png'$/;"	v
+REPLAY	.\data.py	/^REPLAY = 'images\/replay.png'$/;"	v
+REPLAY_IMAGE	.\watermelon - 副本.py	/^REPLAY_IMAGE = 'images\/replay.png'$/;"	v
+REPLAY_IMAGE	.\watermelon.py	/^REPLAY_IMAGE = 'images\/replay.png'$/;"	v
+REPLAY_RECT	.\data.py	/^REPLAY_RECT = ((460, 300), 117, 50)$/;"	v
+SCREEN_HEIGHT	.\data.py	/^SCREEN_HEIGHT = 580$/;"	v
+SCREEN_HEIGHT	.\setPointsPos.py	/^SCREEN_HEIGHT = 580$/;"	v
+SCREEN_HEIGHT	.\watermelon - 副本.py	/^SCREEN_HEIGHT = 580$/;"	v
+SCREEN_HEIGHT	.\watermelon.py	/^SCREEN_HEIGHT = 580$/;"	v
+SCREEN_WIDTH	.\data.py	/^SCREEN_WIDTH = 580$/;"	v
+SCREEN_WIDTH	.\setPointsPos.py	/^SCREEN_WIDTH = 580$/;"	v
+SCREEN_WIDTH	.\watermelon - 副本.py	/^SCREEN_WIDTH = 580$/;"	v
+SCREEN_WIDTH	.\watermelon.py	/^SCREEN_WIDTH = 580$/;"	v
+START	.\data.py	/^START = 'images\/start.png'$/;"	v
+START_IMAGE	.\watermelon - 副本.py	/^START_IMAGE = 'images\/start.png'$/;"	v
+START_IMAGE	.\watermelon.py	/^START_IMAGE = 'images\/start.png'$/;"	v
+UI	.\display.py	/^class UI():$/;"	c
+WHITE	.\data.py	/^WHITE = 2$/;"	v
+WHITE	.\watermelon - 副本.py	/^WHITE = 2$/;"	v
+WHITE	.\watermelon.py	/^WHITE = 2$/;"	v
+WHITETILE	.\data.py	/^WHITETILE = 'images\/white.png'$/;"	v
+WHITETILE	.\setPointsPos.py	/^WHITETILE = 'images\/white.png'$/;"	v
+WHITETILE	.\watermelon - 副本.py	/^WHITETILE = 'images\/white.png'$/;"	v
+WHITETILE	.\watermelon.py	/^WHITETILE = 'images\/white.png'$/;"	v
+__init__	.\chessBoard.py	/^    def __init__(self):$/;"	m	class:ChessBoard
+__init__	.\chessman.py	/^    def __init__(self, color):$/;"	m	class:chessman
+__init__	.\display.py	/^    def __init__(self):$/;"	m	class:UI
+__init__	.\game.py	/^    def __init__(self):$/;"	m	class:Game
+background	.\setPointsPos.py	/^background = pygame.image.load(BACKGROUND).convert()$/;"	v
+background	.\watermelon - 副本.py	/^background = pygame.image.load(BACKGROUND).convert()$/;"	v
+background	.\watermelon.py	/^background = pygame.image.load(BACKGROUND).convert()$/;"	v
+blackTile	.\setPointsPos.py	/^blackTile = pygame.image.load(BLACKTILE).convert_alpha()$/;"	v
+blackTile	.\watermelon - 副本.py	/^blackTile = pygame.image.load(BLACKTILE).convert_alpha()$/;"	v
+blackTile	.\watermelon.py	/^blackTile = pygame.image.load(BLACKTILE).convert_alpha()$/;"	v
+blitChessmen	.\display.py	/^    def blitChessmen(self):$/;"	m	class:UI
+blitMouse	.\display.py	/^    def blitMouse(self):$/;"	m	class:UI
+check	.\control.py	/^def check(chessman, game):$/;"	f
+check	.\watermelon - 副本.py	/^def check(tile):$/;"	f
+check	.\watermelon.py	/^def check(tile):$/;"	f
+checkAll	.\control.py	/^def checkAll(game):$/;"	f
+checkAll	.\watermelon - 副本.py	/^def checkAll():$/;"	f
+checkAll	.\watermelon.py	/^def checkAll():$/;"	f
+checkedTile	.\watermelon - 副本.py	/^checkedTile = []$/;"	v
+checkedTile	.\watermelon.py	/^checkedTile = []$/;"	v
+chessman	.\chessman.py	/^class chessman():$/;"	c
+choose	.\watermelon - 副本.py	/^                            choose = True$/;"	v
+choose	.\watermelon - 副本.py	/^                    choose = False$/;"	v
+choose	.\watermelon - 副本.py	/^choose = False$/;"	v
+choose	.\watermelon.py	/^                            choose = True$/;"	v
+choose	.\watermelon.py	/^                    choose = False$/;"	v
+choose	.\watermelon.py	/^choose = False$/;"	v
+chooseColor	.\watermelon - 副本.py	/^                            chooseColor = tilePos[source]$/;"	v
+chooseColor	.\watermelon.py	/^                            chooseColor = tilePos[source]$/;"	v
+chosenButton	.\control.py	/^def chosenButton((x, y)):$/;"	f
+chosenChessman	.\control.py	/^def chosenChessman((x, y), gameMap):$/;"	f
+computerMove	.\control.py	/^def computerMove(game):$/;"	f
+computerMove	.\watermelon - 副本.py	/^def computerMove():$/;"	f
+computerMove	.\watermelon.py	/^def computerMove():$/;"	f
+computerTileSum	.\watermelon - 副本.py	/^computerTileSum = 6$/;"	v
+computerTileSum	.\watermelon.py	/^computerTileSum = 6$/;"	v
+count	.\setPointsPos.py	/^count = 0$/;"	v
+data	.\chessBoard.py	/^import data$/;"	i
+data	.\control.py	/^import data$/;"	i
+data	.\display.py	/^import data$/;"	i
+data	.\game.py	/^import data$/;"	i
+displayGameOver	.\display.py	/^    def displayGameOver(self):$/;"	m	class:UI
+displayMenu	.\display.py	/^    def displayMenu(self):$/;"	m	class:UI
+displayPlay	.\display.py	/^    def displayPlay(self):$/;"	m	class:UI
+displayQuitConfirm	.\display.py	/^    def displayQuitConfirm(self):$/;"	m	class:UI
+distance	.\setDistance.py	/^        [0] *21,[0] *21,[0] *21,[0] *21,[0] *21,[0] *21,[0] *21,[0] *21,[0] *21,[0] *21,[0] *21]$/;"	v
+distance	.\watermelon - 副本.py	/^distance = getDistance()$/;"	v
+distance	.\watermelon.py	/^distance = getDistance()$/;"	v
+eventControl	.\control.py	/^def eventControl(event, game): $/;"	f
+eventControl	.\display.py	/^from control import eventControl$/;"	i
+eventManagement	.\display.py	/^    def eventManagement(self):$/;"	m	class:UI
+exit	.\setPointsPos.py	/^from sys import exit$/;"	i
+exit	.\watermelon - 副本.py	/^from sys import exit$/;"	i
+exit	.\watermelon.py	/^from sys import exit$/;"	i
+f	.\setDistance.py	/^f = open('distance.txt', 'wb')$/;"	v
+f	.\setPointsPos.py	/^    f = open('pointPos.txt', 'wb')$/;"	v
+fixXY	.\display.py	/^    def fixXY(self, target):$/;"	m	class:UI
+getDistance	.\chessBoard.py	/^    def getDistance(self):$/;"	m	class:ChessBoard
+getDistance	.\watermelon - 副本.py	/^def getDistance():$/;"	f
+getDistance	.\watermelon.py	/^def getDistance():$/;"	f
+getGameMap	.\chessBoard.py	/^    def getGameMap(self):$/;"	m	class:ChessBoard
+getNearbyTile	.\watermelon - 副本.py	/^def getNearbyTile(tile):$/;"	f
+getNearbyTile	.\watermelon.py	/^def getNearbyTile(tile):$/;"	f
+getNeighboors	.\chessman.py	/^    def getNeighboors(self):$/;"	m	class:chessman
+getNeighboors	.\control.py	/^def getNeighboors(chessman, game):$/;"	f
+getPointPos	.\watermelon - 副本.py	/^def getPointPos():$/;"	f
+getPointPos	.\watermelon.py	/^def getPointPos():$/;"	f
+getPointStatus	.\chessBoard.py	/^    def getPointStatus(self):$/;"	m	class:ChessBoard
+getPointsPosition	.\setPointsPos.py	/^def getPointsPosition():$/;"	f
+getPos	.\chessman.py	/^    def getPos(self):$/;"	m	class:chessman
+getXY	.\watermelon - 副本.py	/^def getXY(target):$/;"	f
+getXY	.\watermelon.py	/^def getXY(target):$/;"	f
+goesFirst	.\watermelon - 副本.py	/^def goesFirst():$/;"	f
+goesFirst	.\watermelon.py	/^def goesFirst():$/;"	f
+hand	.\setPointsPos.py	/^hand = pygame.image.load(HAND).convert_alpha()$/;"	v
+hand	.\watermelon - 副本.py	/^hand = pygame.image.load(HAND).convert_alpha()$/;"	v
+hand	.\watermelon.py	/^hand = pygame.image.load(HAND).convert_alpha()$/;"	v
+inRect	.\control.py	/^def inRect((x, y), rect):$/;"	f
+initDistance	.\chessBoard.py	/^    def initDistance(self):$/;"	m	class:ChessBoard
+initGame	.\watermelon - 副本.py	/^def initGame():$/;"	f
+initGame	.\watermelon.py	/^def initGame():$/;"	f
+initGameMap	.\chessBoard.py	/^    def initGameMap(self):$/;"	m	class:ChessBoard
+initPointStatus	.\chessBoard.py	/^    def initPointStatus(self):$/;"	m	class:ChessBoard
+initTilePos	.\watermelon - 副本.py	/^def initTilePos():$/;"	f
+initTilePos	.\watermelon.py	/^def initTilePos():$/;"	f
+json	.\chessBoard.py	/^import json$/;"	i
+json	.\setDistance.py	/^import json$/;"	i
+json	.\setPointsPos.py	/^import json$/;"	i
+json	.\watermelon - 副本.py	/^import json$/;"	i
+json	.\watermelon.py	/^import json$/;"	i
+main	.\display.py	/^def main():$/;"	f
+message	.\watermelon - 副本.py	/^                                message = 'white chess was ate'$/;"	v
+message	.\watermelon - 副本.py	/^                            message = 'target too far'$/;"	v
+message	.\watermelon - 副本.py	/^                        message = 'target error'$/;"	v
+message	.\watermelon - 副本.py	/^                    message = initGame()$/;"	v
+message	.\watermelon - 副本.py	/^            message = 'black chess was ate'$/;"	v
+message	.\watermelon - 副本.py	/^            message = 'game over, player win!'$/;"	v
+message	.\watermelon - 副本.py	/^        message = 'game over, computer win!'$/;"	v
+message	.\watermelon - 副本.py	/^        message = 'game over, player win!'$/;"	v
+message	.\watermelon - 副本.py	/^message = initGame()$/;"	v
+message	.\watermelon.py	/^                                message = 'white chess was ate'$/;"	v
+message	.\watermelon.py	/^                            message = 'target too far'$/;"	v
+message	.\watermelon.py	/^                        message = 'target error'$/;"	v
+message	.\watermelon.py	/^                    message = initGame()$/;"	v
+message	.\watermelon.py	/^            message = 'black chess was ate'$/;"	v
+message	.\watermelon.py	/^            message = 'game over, player win!'$/;"	v
+message	.\watermelon.py	/^        message = 'game over, computer win!'$/;"	v
+message	.\watermelon.py	/^        message = 'game over, player win!'$/;"	v
+message	.\watermelon.py	/^message = initGame()$/;"	v
+mouse_cursor	.\setPointsPos.py	/^mouse_cursor = pygame.image.load(BLACKTILE).convert_alpha()$/;"	v
+mouse_cursor	.\watermelon - 副本.py	/^mouse_cursor = pygame.image.load(BLACKTILE).convert_alpha()$/;"	v
+mouse_cursor	.\watermelon.py	/^mouse_cursor = pygame.image.load(BLACKTILE).convert_alpha()$/;"	v
+move	.\setPointsPos.py	/^def move(tile, target):$/;"	f
+move	.\watermelon - 副本.py	/^        move = computerMove()$/;"	v
+move	.\watermelon - 副本.py	/^def move(tile, target):$/;"	f
+move	.\watermelon.py	/^        move = computerMove()$/;"	v
+move	.\watermelon.py	/^def move(tile, target):$/;"	f
+myFont	.\watermelon - 副本.py	/^myFont = pygame.font.SysFont('arial', 18)$/;"	v
+myFont	.\watermelon.py	/^myFont = pygame.font.SysFont('arial', 18)$/;"	v
+nearPoint	.\setPointsPos.py	/^def nearPoint((x, y)):$/;"	f
+nearPoint	.\watermelon - 副本.py	/^def nearPoint((x, y)):$/;"	f
+nearPoint	.\watermelon.py	/^def nearPoint((x, y)):$/;"	f
+p1	.\setDistance.py	/^        p1 = int(raw_input())$/;"	v
+p1	.\setDistance.py	/^p1 = 1$/;"	v
+p2	.\setDistance.py	/^        p2 = int(raw_input())$/;"	v
+pdb	.\control.py	/^import pdb$/;"	i
+pdb	.\display.py	/^import pdb$/;"	i
+pdb	.\watermelon - 副本.py	/^import pdb$/;"	i
+pdb	.\watermelon.py	/^import pdb$/;"	i
+playerTileSum	.\watermelon - 副本.py	/^playerTileSum = 6$/;"	v
+playerTileSum	.\watermelon.py	/^playerTileSum = 6$/;"	v
+pointPos	.\setPointsPos.py	/^pointPos = [] #positions of the 21 points$/;"	v
+pointPos	.\watermelon - 副本.py	/^pointPos = [] #positions of the 21 points$/;"	v
+pointPos	.\watermelon - 副本.py	/^pointPos = getPointPos()$/;"	v
+pointPos	.\watermelon.py	/^pointPos = [] #positions of the 21 points$/;"	v
+pointPos	.\watermelon.py	/^pointPos = getPointPos()$/;"	v
+pygame	.\control.py	/^import pygame$/;"	i
+pygame	.\display.py	/^import pygame $/;"	i
+pygame	.\setPointsPos.py	/^import pygame$/;"	i
+pygame	.\watermelon - 副本.py	/^import pygame$/;"	i
+pygame	.\watermelon.py	/^import pygame$/;"	i
+random	.\control.py	/^import random$/;"	i
+random	.\watermelon - 副本.py	/^import random$/;"	i
+random	.\watermelon.py	/^import random$/;"	i
+rec	.\setDistance.py	/^        rec = False$/;"	v
+rec	.\setDistance.py	/^        rec = True$/;"	v
+rec	.\setDistance.py	/^rec = True$/;"	v
+replayImage	.\watermelon - 副本.py	/^replayImage = pygame.image.load(REPLAY_IMAGE).convert_alpha()$/;"	v
+replayImage	.\watermelon.py	/^replayImage = pygame.image.load(REPLAY_IMAGE).convert_alpha()$/;"	v
+resetGame	.\game.py	/^    def resetGame(self):$/;"	m	class:Game
+screen	.\setPointsPos.py	/^screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), 0, 32)$/;"	v
+screen	.\watermelon - 副本.py	/^                        screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), 0, 32)$/;"	v
+screen	.\watermelon - 副本.py	/^                        screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), FULLSCREEN, 32)$/;"	v
+screen	.\watermelon - 副本.py	/^screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), 0, 32)$/;"	v
+screen	.\watermelon.py	/^                        screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), 0, 32)$/;"	v
+screen	.\watermelon.py	/^                        screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), FULLSCREEN, 32)$/;"	v
+screen	.\watermelon.py	/^screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), 0, 32)$/;"	v
+setDead	.\chessman.py	/^    def setDead(self):$/;"	m	class:chessman
+source	.\watermelon - 副本.py	/^                    source = nearPoint((x, y)) #choose source tile$/;"	v
+source	.\watermelon - 副本.py	/^source = None$/;"	v
+source	.\watermelon.py	/^                    source = nearPoint((x, y)) #choose source tile$/;"	v
+source	.\watermelon.py	/^source = None$/;"	v
+startImage	.\watermelon - 副本.py	/^startImage = pygame.image.load(START_IMAGE).convert_alpha()$/;"	v
+startImage	.\watermelon.py	/^startImage = pygame.image.load(START_IMAGE).convert_alpha()$/;"	v
+sys	.\display.py	/^import sys $/;"	i
+target	.\watermelon - 副本.py	/^                    target = nearPoint((x, y)) #choose target tile$/;"	v
+target	.\watermelon - 副本.py	/^target = None$/;"	v
+target	.\watermelon.py	/^                    target = nearPoint((x, y)) #choose target tile$/;"	v
+target	.\watermelon.py	/^target = None$/;"	v
+tempTilePos	.\watermelon - 副本.py	/^                            tempTilePos = tilePos$/;"	v
+tempTilePos	.\watermelon - 副本.py	/^        tempTilePos = tilePos$/;"	v
+tempTilePos	.\watermelon.py	/^                            tempTilePos = tilePos$/;"	v
+tempTilePos	.\watermelon.py	/^        tempTilePos = tilePos$/;"	v
+text_surface	.\watermelon - 副本.py	/^    text_surface = myFont.render(message, True, (0, 0, 0), (102, 204, 255))$/;"	v
+text_surface	.\watermelon.py	/^    text_surface = myFont.render(message, True, (0, 0, 0), (102, 204, 255))$/;"	v
+tilePos	.\watermelon - 副本.py	/^tilePos = [0] * 21 #whether there is a tile$/;"	v
+tilePos	.\watermelon - 副本.py	/^tilePos = initTilePos()$/;"	v
+tilePos	.\watermelon.py	/^tilePos = [0] * 21 #whether there is a tile$/;"	v
+tilePos	.\watermelon.py	/^tilePos = initTilePos()$/;"	v
+turn	.\watermelon - 副本.py	/^                            turn = COMPUTER$/;"	v
+turn	.\watermelon - 副本.py	/^        turn = PLAYER$/;"	v
+turn	.\watermelon - 副本.py	/^turn = 1$/;"	v
+turn	.\watermelon.py	/^                            turn = COMPUTER$/;"	v
+turn	.\watermelon.py	/^        turn = PLAYER$/;"	v
+turn	.\watermelon.py	/^turn = 1$/;"	v
+urllib2	.\server\index.py	/^import urllib2$/;"	i
+urllib2	.\server\xgqsrv.py	/^import urllib2$/;"	i
+whiteTile	.\setPointsPos.py	/^whiteTile = pygame.image.load(WHITETILE).convert_alpha()$/;"	v
+whiteTile	.\watermelon - 副本.py	/^whiteTile = pygame.image.load(WHITETILE).convert_alpha()$/;"	v
+whiteTile	.\watermelon.py	/^whiteTile = pygame.image.load(WHITETILE).convert_alpha()$/;"	v
