@@ -8,6 +8,7 @@ import urllib
 import urllib2
 import json
 import time
+import copy
 from pygame.locals import *
 
 def inRect((x, y), rect, game):
@@ -43,44 +44,88 @@ def chosenChessman((x, y), gameMap):
             return point
     return None
 
-def getNeighboors(chessman, game):
+def getNeighboors(chessman, distance):
     neighboorChessmen= []
-    for eachChessman, eachDistance in enumerate(game.distance[chessman]):
+    for eachChessman, eachDistance in enumerate(distance[chessman]):
         if eachDistance == 1:
             neighboorChessmen.append(eachChessman)
     return neighboorChessmen 
 
-def computerMove(game):
-    move = []
-    for chessman, color in enumerate(game.pointStatus):
-        if color == game.opponentColor:
-            for neighboorChessman in getNeighboors(chessman, game):
-                if game.pointStatus[neighboorChessman] == 0:
-                    move.append((chessman, neighboorChessman))
-    if not move:
-        return None
-    return random.choice(move) 
-
-
-def check(chessman, game):
-    game.checkedChessmen.append(chessman)
-    dead = True
-    neighboorChessmen = getNeighboors(chessman, game)
-    for neighboorChessman in neighboorChessmen:
-        if neighboorChessman not in game.checkedChessmen:
-            #if the neighboor is the same color, check the neighboor to find a empty neighboor
-            if game.pointStatus[neighboorChessman] == game.pointStatus[chessman]:
-                dead = check(neighboorChessman, game)
-                if dead == False:
-                    return dead
-            elif game.pointStatus[neighboorChessman] == 0:
-                dead = False
-                return dead
+def getScore(pointStatus, distance):
+    score = 0
+    scoreLevel = [1, 2, 4, 6]
+    black = [x for x in distance if x == data.BLACK]
+    #if chessman was eaten, sub 8 score for each one
+    score -= 8 * (6-len(black))
+    for chessman, color in enumerate(pointStatus):
+        advantg = 0
+        disadvtg = 0
+        neighboors = getNeighboors(chessman, distance)
+        for eachNeighboor in neighboors:
+            #computer use black chessman as default
+            if pointStatus[eachNeighboor] == data.BLACK and color == data.WHITE:
+                advantg += 1
+                score += scoreLevel[advantg - 1]
+            elif pointStatus[eachNeighboor] == data.WHITE and color == data.BLACK:
+                disadvtg += 1
+                score -= scoreLevel[disadvtg - 1]
             else:
                 pass
-    return dead
+            #unnecessary
+            '''
+            elif color == data.WHITE:
+                if pointStatus[eachNeighboor] == data.BLACK:
+                    score += 2
+                elif pointStatus[eachNeighboor] == data.WHITE:
+                    score -= 2
+            '''
+    return score
 
-def checkAll(game):
+def computerMove(pointStatus, distance, level):
+    move = []
+    maxScore = -48
+    bestMove = None
+    #for convenient, set color = computer color (black) when enter the function firstly
+    if level%2 == 1:
+        selfColor = data.BLACK
+        opponentColor = data.WHITE
+    else:
+        selfColor = data.WHITE
+        opponentColor = data.WHITE
+    #best move is itself, replace it with None
+    if level > 4:
+        score = getScore(pointStatus, distance)
+        return [], score
+    else:
+        for chessman, color in enumerate(pointStatus):
+            if color == selfColor:
+                for neighboorChessman in getNeighboors(chessman, distance):
+                    if pointStatus[neighboorChessman] == 0:
+                        move.append((chessman, neighboorChessman))
+        if not move:
+            return [], -49
+        bakPointStatus = copy.deepcopy(pointStatus)
+        for eachMove in move:
+            pointStatus[eachMove[1]] = selfColor
+            pointStatus[eachMove[0]] = 0
+            pointStatus = shiftOutChessman(pointStatus, distance)
+            #newMove is useless, just for return the best move in the first level
+            newMove, score = computerMove(pointStatus, distance, level + 1)
+            if score > maxScore:
+                maxScore = score
+                bestMove = eachMove
+            #revoke the change
+            pointStatus = copy.deepcopy(bakPointStatus)
+        return bestMove, maxScore
+
+def checkWinner(game):
+    game.chessBoard.blackNum = 0
+    game.chessBoard.whiteNum = 0
+    for color in game.pointStatus:
+        if color == data.BLACK:
+            game.chessBoard.blackNum += 1
+        elif color == data.WHITE:
+            game.chessBoard.whiteNum += 1
     if game.chessBoard.blackNum < 3 or game.chessBoard.whiteNum < 3:
         game.status = 'query'
         game.over = True
@@ -92,26 +137,44 @@ def checkAll(game):
             game = setQuery(game, 'play', 'menu', 'You win!')
         else:
             game = setQuery(game, 'play', 'menu', 'You lose~')
-        return game
-    game.deadChessmen = []
-    for chessman, color in enumerate(game.pointStatus):
-        game.checkedChessmen = []
+    return game
+
+def check(chessman, distance, pointStatus, checkedChessmen):
+    checkedChessmen.append(chessman)
+    dead = True
+    neighboorChessmen = getNeighboors(chessman, distance)
+    for neighboorChessman in neighboorChessmen:
+        if neighboorChessman not in checkedChessmen:
+            #if the neighboor is the same color, check the neighboor to find a empty neighboor
+            if pointStatus[neighboorChessman] == pointStatus[chessman]:
+                dead = check(neighboorChessman, distance, pointStatus, checkedChessmen)
+                if dead == False:
+                    return dead
+            elif pointStatus[neighboorChessman] == 0:
+                dead = False
+                return dead
+            else:
+                pass
+    return dead
+
+def shiftOutChessman(pointStatus, distance):
+    deadChessmen = []
+    bakPointStatus = copy.deepcopy(pointStatus)
+    for chessman, color in enumerate(pointStatus):
+        checkedChessmen = []
         dead = True
         if color != 0:
             #pdb.set_trace()
-            dead = check(chessman, game)
-            if dead:
-                game.deadChessmen.append(chessman)
-                if color == data.BLACK:
-                    game.chessBoard.blackNum -= 1
-                else:
-                    game.chessBoard.whiteNum -= 1
+            dead = check(chessman, distance, pointStatus, checkedChessmen)
         else:
             pass
-    for eachDeadChessman in game.deadChessmen:
-        game.pointStatus[eachDeadChessman] = 0
+        if dead:
+            deadChessmen.append(chessman)
+        pointStatus = bakPointStatus
+    for eachDeadChessman in deadChessmen:
+        pointStatus[eachDeadChessman] = 0
 
-    return game
+    return pointStatus
 
 def setQuery(game, lastStatus, nextStatus, msg):
     game.lastStatus = lastStatus
@@ -165,7 +228,7 @@ def checkOpponent(game):
     if clock(game):
         response = getData(game)
         print response
-        game.msg = time.ctime() + "querying or waiting for you opponent's movement"
+        game.msg = time.ctime() + "waiting for you opponent's movement"
         game.time = time.time()
         game.turn = response['turn']
         try:
@@ -224,6 +287,9 @@ def playControl(event, game):
                             game.distance[game.chosenChessman][chessman] == 1:
                         game.pointStatus[chessman] = game.chosenChessmanColor
                         game.msg = 'Chessman was moved'
+                        bakPointStatus = copy.deepcopy(game.pointStatus)
+                        game.pointStatus = shiftOutChessman(bakPointStatus, game.distance)
+                        game = checkWinner(game)
                         if game.isOnline:
                             game.turn = game.opponent
                             sendData(game)
@@ -234,7 +300,8 @@ def playControl(event, game):
                         game.pointStatus[game.chosenChessman] = game.chosenChessmanColor
                         game.msg = 'not a valid choice'
                     game.chessmanInHand = False
-            game, newPointStatus= checkOpponent(game)
+            if game.isOnline:
+                game, newPointStatus= checkOpponent(game)
                 
         elif game.turn == 'computer':
             if event.type == MOUSEBUTTONDOWN:
@@ -249,12 +316,14 @@ def playControl(event, game):
                     game = setQuery(game, 'play', 'menu', 'Back to menu?')
                 else:
                     pass
-            move = computerMove(game)
-            if move:
-                source, target = computerMove(game)
-                game.pointStatus[move[1]] = game.opponentColor
-                game.pointStatus[move[0]] = 0
-                game.turn = game.name
+            bakPointStatus = copy.deepcopy(game.pointStatus)
+            move, score = computerMove(bakPointStatus, game.distance, 1)
+            game.pointStatus[move[1]] = game.opponentColor
+            game.pointStatus[move[0]] = 0
+            game.turn = game.name
+            bakPointStatus = copy.deepcopy(game.pointStatus)
+            game.pointStatus = shiftOutChessman(bakPointStatus, game.distance)
+            game = checkWinner(game)
 
         elif game.turn == game.opponent:
             if event.type == MOUSEBUTTONDOWN:
@@ -272,9 +341,11 @@ def playControl(event, game):
             game, newPointStatus = checkOpponent(game)
             if game.turn == game.name:
                 game.pointStatus = newPointStatus
+            bakPointStatus = copy.deepcopy(game.pointStatus)
+            game.pointStatus = shiftOutChessman(bakPointStatus, game.distance)
+            game = checkWinner(game)
         else:
             pass 
-    game = checkAll(game)
     return game
 
 def menuControl(event, game):
@@ -293,6 +364,7 @@ def menuControl(event, game):
             game.resetGame()
             game.status = 'play'
             game.isOnline = True
+            #pdb.set_trace()
             game = initNetworkGame(game)
             game.msg =  time.ctime() + '  enter room: ' + game.roomID + ' get name: ' + game.name
             game.time = time.time()
