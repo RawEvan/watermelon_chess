@@ -116,11 +116,12 @@ blackTile	.\watermelon.py	/^blackTile = pygame.image.load(BLACKTILE).convert_alp
 blitChessmen	.\display.py	/^    def blitChessmen(self):$/;"	m	class:UI
 blitMouse	.\display.py	/^    def blitMouse(self):$/;"	m	class:UI
 check	.\backup\watermelon - 副本.py	/^def check(tile):$/;"	f
-check	.\control.py	/^def check(chessman, game):$/;"	f
+check	.\control.py	/^def check(chessman, distance, distance, checkedChessmen):$/;"	f
 check	.\watermelon.py	/^def check(tile):$/;"	f
 checkAll	.\backup\watermelon - 副本.py	/^def checkAll():$/;"	f
-checkAll	.\control.py	/^def checkAll(game):$/;"	f
 checkAll	.\watermelon.py	/^def checkAll():$/;"	f
+checkOpponent	.\control.py	/^def checkOpponent(game):$/;"	f
+checkWinner	.\control.py	/^def checkWinner(game):$/;"	f
 checkedTile	.\backup\watermelon - 副本.py	/^checkedTile = []$/;"	v
 checkedTile	.\watermelon.py	/^checkedTile = []$/;"	v
 chessman	.\chessman.py	/^class chessman():$/;"	c
@@ -136,7 +137,7 @@ chosenButton	.\control.py	/^def chosenButton((x, y), game):$/;"	f
 chosenChessman	.\control.py	/^def chosenChessman((x, y), gameMap):$/;"	f
 clock	.\control.py	/^def clock(game):$/;"	f
 computerMove	.\backup\watermelon - 副本.py	/^def computerMove():$/;"	f
-computerMove	.\control.py	/^def computerMove(game):$/;"	f
+computerMove	.\control.py	/^def computerMove(pointStatus, distance, level):$/;"	f
 computerMove	.\watermelon.py	/^def computerMove():$/;"	f
 computerTileSum	.\backup\watermelon - 副本.py	/^computerTileSum = 6$/;"	v
 computerTileSum	.\watermelon.py	/^computerTileSum = 6$/;"	v
@@ -171,7 +172,7 @@ getGameMap	.\chessBoard.py	/^    def getGameMap(self):$/;"	m	class:ChessBoard
 getNearbyTile	.\backup\watermelon - 副本.py	/^def getNearbyTile(tile):$/;"	f
 getNearbyTile	.\watermelon.py	/^def getNearbyTile(tile):$/;"	f
 getNeighboors	.\chessman.py	/^    def getNeighboors(self):$/;"	m	class:chessman
-getNeighboors	.\control.py	/^def getNeighboors(chessman, game):$/;"	f
+getNeighboors	.\control.py	/^def getNeighboors(chessman, distance):$/;"	f
 getPointPos	.\backup\watermelon - 副本.py	/^def getPointPos():$/;"	f
 getPointPos	.\watermelon.py	/^def getPointPos():$/;"	f
 getPointStatus	.\chessBoard.py	/^    def getPointStatus(self):$/;"	m	class:ChessBoard
@@ -306,12 +307,14 @@ setName	.\server\xiguaqiServer\views.py	/^def setName():$/;"	f
 setQuery	.\control.py	/^def setQuery(game, lastStatus, nextStatus, msg):$/;"	f
 setRoomID	.\server\xiguaqiServer\views.py	/^def setRoomID():$/;"	f
 setScreen	.\display.py	/^    def setScreen(self):$/;"	m	class:UI
+shiftOutChessman	.\control.py	/^def shiftOutChessman(pointStatus, distance):$/;"	f
 source	.\backup\watermelon - 副本.py	/^                    source = nearPoint((x, y)) #choose source tile$/;"	v
 source	.\backup\watermelon - 副本.py	/^source = None$/;"	v
 source	.\watermelon.py	/^                    source = nearPoint((x, y)) #choose source tile$/;"	v
 source	.\watermelon.py	/^source = None$/;"	v
 startImage	.\backup\watermelon - 副本.py	/^startImage = pygame.image.load(START_IMAGE).convert_alpha()$/;"	v
 startImage	.\watermelon.py	/^startImage = pygame.image.load(START_IMAGE).convert_alpha()$/;"	v
+strColor	.\game.py	/^    def strColor(self, color):$/;"	m	class:Game
 sys	.\display.py	/^import sys $/;"	i
 sys	.\server\manage.py	/^import sys$/;"	i
 target	.\backup\watermelon - 副本.py	/^                    target = nearPoint((x, y)) #choose target tile$/;"	v
