@@ -1,8 +1,11 @@
-#coding:utf-8
-#class of game which contain the values of game status
+# coding:utf-8
+# class of game which contain the values of game status
 import data
 from chessBoard import ChessBoard
+
+
 class Game():
+
     def __init__(self):
         self.msg = None
         self.fullScreenMod = 0
@@ -18,7 +21,8 @@ class Game():
         self.chessBoard = ChessBoard()
         self.gameMap = self.chessBoard.getGameMap()
         self.distance = self.chessBoard.getDistance()
-        self.enableButton = [data.LOCALGAME_RECT, data.NETWORKGAME_RECT, data.MENU_QUIT_RECT]
+        self.enableButton = [data.LOCALGAME_RECT,
+                             data.NETWORKGAME_RECT, data.MENU_QUIT_RECT]
         self.roomID = 'local'
         self.name = 'default'
         self.opponent = 'computer'

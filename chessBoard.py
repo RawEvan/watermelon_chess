@@ -1,10 +1,12 @@
-#coding:utf-8
-#class of chessboard
+# coding:utf-8
+# class of chessboard
 #from chessman import chessman
 import data
 import json
 
+
 class ChessBoard():
+
     def __init__(self):
         self.gameMap = []
         self.pointStatus = []
@@ -18,12 +20,13 @@ class ChessBoard():
         self.initDistance()
         self.initPointStatus()
         self.initGameMap()
+
     def getGameMap(self):
-        return self.gameMap 
+        return self.gameMap
 
     def getPointStatus(self):
         return self.pointStatus
-    
+
     def getDistance(self):
         return self.distance
 
@@ -41,9 +44,9 @@ class ChessBoard():
         for x in range(21):
             self.pointStatus.append(0)
         self.pointStatus[0] = self.pointStatus[1] = self.pointStatus[2] \
-                = self.pointStatus[3] = self.pointStatus[8] = self.pointStatus[4] = data.BLACK #black
+            = self.pointStatus[3] = self.pointStatus[8] = self.pointStatus[4] = data.BLACK  # black
         self.pointStatus[15] = self.pointStatus[13] = self.pointStatus[14]\
-                = self.pointStatus[12] = self.pointStatus[7] = self.pointStatus[11] = data.WHITE #white
+            = self.pointStatus[12] = self.pointStatus[7] = self.pointStatus[11] = data.WHITE  # white
 
     def initChessmanNum(self):
         self.whiteNum = 6
@@ -53,10 +56,8 @@ class ChessBoard():
         try:
             f = open(data.MAPPATH, 'rb')
             pointPos = json.loads(f.read())
-            self.gameMap= pointPos
+            self.gameMap = pointPos
         except Exception, e:
             print 'file open error', e
         finally:
             f.close()
-
-
