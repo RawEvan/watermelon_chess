@@ -4,17 +4,17 @@ import pygame
 import json
 from pygame.locals import *
 from sys import exit
-BACKGROUND = 'images/watermelon.png'
-BLACKTILE = 'images/black.png'
-WHITETILE = 'images/white.png'
-HAND = 'images/hand.png'
+BACKGROUND = '../resources/images/watermelon.png'
+BLACKTILE = '../resources/images/black.png'
+WHITETILE = '../resources/images/white.png'
+HAND = '../resources/images/hand.png'
 SCREEN_WIDTH = 580
 SCREEN_HEIGHT = 580
 FULLSCREENMOD = False
 count = 0
 pointPos = []  # positions of the 21 points
 try:
-    f = open('pointPos.txt', 'wb')
+    f = open('../resources/pointPos.txt', 'wb')
 except:
     print 'file open error'
 

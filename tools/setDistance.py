@@ -1,7 +1,7 @@
 # coding:utf-8
 # watermelon chess
 import json
-f = open('distance.txt', 'wb')
+f = open('../distance.txt', 'wb')
 distance = [[0] * 21, [0] * 21, [0] * 21, [0] * 21, [0] * 21, [0] * 21, [0] * 21, [0] * 21, [0] * 21, [0] * 21,
             [0] * 21, [0] * 21, [0] * 21, [0] * 21, [0] * 21, [0] * 21, [0] * 21, [0] * 21, [0] * 21, [0] * 21, [0] * 21]
 rec = True
