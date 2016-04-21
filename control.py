@@ -12,6 +12,9 @@ import copy
 from pygame.locals import *
 
 
+# difficulty of the game 
+DEEPEST_LEVEL = 3
+
 def inRect((x, y), rect, game):
     if rect[0][0] < x < rect[0][0] + rect[1]\
             and rect[0][1] < y < rect[0][1] + rect[2]\
@@ -99,8 +102,8 @@ def computerMove(pointStatus, distance, level):
     else:
         selfColor = data.WHITE
         opponentColor = data.WHITE
-    # best move is itself, replace it with None
-    if level > 4:
+    # In the deepest level, the best move is itself, replace it with None
+    if level > DEEPEST_LEVEL:
         score = getScore(pointStatus, distance)
         return [], score
     else:
