@@ -41,12 +41,14 @@ class ChessBoard():
 
     def initPointStatus(self):
         self.pointStatus = []
+        black = [0,1,2,3,4,8]
+        white = [7,11,12,13,15]
         for x in range(21):
             self.pointStatus.append(0)
-        self.pointStatus[0] = self.pointStatus[1] = self.pointStatus[2] \
-            = self.pointStatus[3] = self.pointStatus[8] = self.pointStatus[4] = data.BLACK  # black
-        self.pointStatus[15] = self.pointStatus[13] = self.pointStatus[14]\
-            = self.pointStatus[12] = self.pointStatus[7] = self.pointStatus[11] = data.WHITE  # white
+        for x in black:
+            self.pointStatus[x] = data.BLACK
+        for x in white:
+            self.pointStatus[x] = data.WHITE
 
     def initChessmanNum(self):
         self.whiteNum = 6
