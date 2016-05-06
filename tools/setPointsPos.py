@@ -13,10 +13,6 @@ SCREEN_HEIGHT = 580
 FULLSCREENMOD = False
 count = 0
 pointPos = []  # positions of the 21 points
-try:
-    f = open('../resources/pointPos.txt', 'wb')
-except:
-    print 'file open error'
 
 pygame.init()
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), 0, 32)
@@ -74,6 +70,10 @@ while True:
             count = count + 1
             print pointPos
         if count == 21:
+            try:
+                f = open('../resources/pointPos.txt', 'wb')
+            except:
+                print 'file open error'
             f.write(json.dumps(pointPos))
             f.close()
             print 'write!'

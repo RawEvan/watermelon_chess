@@ -42,7 +42,7 @@ class ChessBoard():
     def initPointStatus(self):
         self.pointStatus = []
         black = [0,1,2,3,4,8]
-        white = [7,11,12,13,15]
+        white = [7,11,12,13,14,15]
         for x in range(21):
             self.pointStatus.append(0)
         for x in black:
