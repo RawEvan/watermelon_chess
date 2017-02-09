@@ -3,7 +3,7 @@
 
 Run "run_game.py" by Python(Python3 can't work)
 
-You can also down the "watermelon_chess.zip" from [https://raw.githubusercontent.com/RawEvan/watermelon_chess/master/exe/run_game.exe](https://raw.githubusercontent.com/RawEvan/watermelon_chess/master/exe/run_game.exe)
+You can also down the "watermelon_chess.zip" from [https://github.com/RawEvan/watermelon_chess/tree/master/exehttps://github.com/RawEvan/watermelon_chess/tree/master/exe](https://github.com/RawEvan/watermelon_chess/tree/master/exe)
 
 ###environment###
 Python2.7.9
