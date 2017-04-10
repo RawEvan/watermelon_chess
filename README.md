@@ -12,5 +12,5 @@ Run "run_game.py" by Python
 
 ### Screenshots
 
-### server
+### Server
 https://github.com/RawEvan/watermelon_chess_server
