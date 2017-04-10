@@ -1,17 +1,16 @@
-##watermelon_chess  ：  西瓜棋##
-###usage###
+## watermelon_chess  ：  西瓜棋
+### Usage
 
-Run "run_game.py" by Python(Python3 can't work)
+Run "run_game.py" by Python
 
-You can also down the "watermelon_chess.zip" from [here](https://github.com/RawEvan/watermelon_chess/tree/master/exe)
+### Download
 
-###environment###
-Python2.7.9
+### Environment
 
-Pygame1.9.1
+* Python2.7.9
+* Pygame1.9.1
 
-###screenshots###
-Screenshots are [here](https://github.com/RawEvan/watermelon_chess/tree/master/screenshots)
+### Screenshots
 
-###server###
-There is a branch for [server](https://github.com/RawEvan/watermelon_chess/tree/server)
+### server
+https://github.com/RawEvan/watermelon_chess_server
