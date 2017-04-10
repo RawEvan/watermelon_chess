@@ -1,9 +1,11 @@
 ## watermelon_chess  ：  西瓜棋
-### Usage
-
-Run "run_game.py" by Python
 
 ### Download
+https://github.com/RawEvan/watermelon_chess/releases
+
+### Usage
+
+Download the zip file, extract and run "run_game.py" by Python
 
 ### Environment
 
