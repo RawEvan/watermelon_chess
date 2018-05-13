@@ -14,7 +14,7 @@ class chessman():
         pass
 
     def setDead(self):
-        sefl.dead = True
+        self.dead = True
 
     def getNeighboors(self):
         pass
